@@ -77,7 +77,6 @@ export abstract class Client {
   public async performAuthenticationRequest(request: AuthenticationRequestI): Promise<AuthenticationResponse> {
     const configuration = await this.getConfiguration()
 
-// TODO pixtron - maybe it would be cleaner to have an authenticationRequest factory setable from outside?
     const authenticationRequest = this.getAuthenticationRequest(this.credentials, configuration)
 
     authenticationRequest.setUrlUtility(this.urlUtility)
