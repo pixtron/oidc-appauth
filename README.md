@@ -19,7 +19,7 @@ There is a `Node.js` example in [`src/node-example.ts`](src/node-example.ts).
 
 ### Initialize the client
 
-```
+```ts
 import { Client } from '@pxtrn/oidc-appauth'
 
 const credentials = {
@@ -36,7 +36,7 @@ You might also directly pass a provider configuration ([ProviderConfigurationI](
 
 ### Authentication Request
 
-```
+```ts
 import { AuthenticationRequestI } from '@pxtrn/oidc-appauth'
 
 const request: AuthenticationRequestI = {
@@ -65,7 +65,7 @@ switch (responseType) {
 
 ### Exchange authorization code for token
 
-```
+```ts
 import { TokenResponse } from '@pxtrn/oidc-appauth'
 
 //authResponse from [Authentication Request](#authentication-request)
@@ -91,7 +91,7 @@ switch (responseType) {
 
 ### Refresh access token
 
-```
+```ts
 import { TokenResponse } from '@pxtrn/oidc-appauth'
 
 // refreshToken from previous TokenResponse
@@ -116,7 +116,7 @@ switch (responseType) {
 
 ### Revoke access token
 
-```
+```ts
 import { RevokeTokenResponse } from '@pxtrn/oidc-appauth'
 
 const response = await client.revokeToken(token, 'access_token')
