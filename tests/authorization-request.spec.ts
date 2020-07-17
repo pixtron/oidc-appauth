@@ -138,7 +138,7 @@ describe('AuthenticationRequest', () => {
     it('should build the request url based on credentials and provider configuration', async () => {
       const request = createRequest(credentials, configuration)
       await request.performRequest(requestSettings)
-console.log({request, requestSettings})
+
       const url = await request.getRequestUrl()
       expect(url).to.equal('https://example.org/authorize?client_id=xxx&redirect_uri=https%3A%2F%2Fexample.com%2Fredirect&response_type=code&scope=openid&state=someState')
     })
