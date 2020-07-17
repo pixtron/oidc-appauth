@@ -68,14 +68,14 @@ export class NodeAuthenticationResponseListener extends AuthenticationResponseLi
           this.startingPromise = null
         })
 
-        this.server.on('error', error => {
+        this.server.on('error', async error => {
           if (this.readyState === NodeAuthenticationResponseListener.READY_STATE_STARTING) {
             reject(error)
             this.startingPromise = null
           }
 
-          this.stopServer()
           this.emit('error', error)
+          await this.stopServer()
         })
       } catch (error) {
         this.handleStartServerError()
@@ -84,7 +84,7 @@ export class NodeAuthenticationResponseListener extends AuthenticationResponseLi
     })
 
     this.startingPromise.catch(() => {
-      this.stop()
+      return this.stop()
     })
 
     return this.startingPromise

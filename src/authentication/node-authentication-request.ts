@@ -42,13 +42,13 @@ export class NodeAuthenticationRequest extends AuthenticationRequest {
           reject(new AppauthError('AuthenticationResponseListener had an error, aborting request', error))
         })
 
-        this.listener.once('response', (responseUrl) => {
-          this.listener.stop()
+        this.listener.once('response', async (responseUrl) => {
           const response = new AuthenticationResponse(this.request!, responseUrl)
           resolve(response)
+          await this.listener.stop()
         })
 
-        open(url)
+        await open(url)
       } catch (error) {
         try {
           await this.listener.stop()
